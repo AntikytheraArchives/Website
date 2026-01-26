@@ -15,7 +15,7 @@ pagination.pagerSize = 5
   contentTypeName = "posts"
 
   # if you set this to 0, only submenu trigger will be visible
-  showMenuItems = 2
+  showMenuItems = 4
 
   # show selector to switch language
   showLanguageSelector = true
@@ -98,12 +98,20 @@ pagination.pagerSize = 5
       [languages.en.menu]
         [[languages.en.menu.main]]
           identifier = "about"
-          name = "About"
+          name = "The Archive"
           url = "/about"
         [[languages.en.menu.main]]
-          identifier = "showcase"
-          name = "Showcase"
-          url = "/showcase"
+          identifier = "games"
+          name = "Games"
+          url = "/games"
+		[[languages.en.menu.main]]
+          identifier = "press"
+          name = "Press"
+          url = "/press"
+		[[languages.en.menu.main]]
+          identifier = "contact"
+          name = "Contact Us"
+          url = "/contact"
 
   [languages.it]
     languageName = "Italiano"
@@ -131,12 +139,20 @@ pagination.pagerSize = 5
       [languages.it.menu]
         [[languages.it.menu.main]]
           identifier = "about"
-          name = "About"
+          name = "L'Archivio"
           url = "/about"
         [[languages.it.menu.main]]
-          identifier = "showcase"
-          name = "Showcase"
-          url = "/showcase"
+          identifier = "games"
+          name = "Giochi"
+          url = "/games"
+		[[languages.it.menu.main]]
+          identifier = "press"
+          name = "Press"
+          url = "/press"
+		[[languages.it.menu.main]]
+          identifier = "contact"
+          name = "Contattaci"
+          url = "/contact"
 
 [module]
   # In case you would like to make changes to the theme and keep it locally in you repository,
