@@ -18,13 +18,13 @@ pagination.pagerSize = 5
   showMenuItems = 2
 
   # show selector to switch language
-  showLanguageSelector = false
+  showLanguageSelector = true
 
   # set theme to full screen width
   fullWidthTheme = false
 
   # center theme with default width
-  centerTheme = false
+  centerTheme = true
 
   # if your resource directory contains an image called `cover.(jpg|png|webp)`,
   # then the file will be used as a cover automatically.
@@ -74,13 +74,13 @@ pagination.pagerSize = 5
 [languages]
   [languages.en]
     languageName = "English"
-    title = "Terminal"
+    title = "Antikthera Archives"
 
     [languages.en.params]
       subtitle = "A simple, retro theme for Hugo"
-      owner = ""
+      owner = "Antikthera Archives"
       keywords = ""
-      copyright = ""
+      copyright = "Antikthera Archives"
       menuMore = "Show more"
       readMore = "Read more"
       readOtherPosts = "Read other posts"
@@ -92,7 +92,7 @@ pagination.pagerSize = 5
       words = "words"
 
       [languages.en.params.logo]
-        logoText = "Terminal"
+        logoText = "Antikthera Archives"
         logoHomeLink = "/"
 
       [languages.en.menu]
@@ -101,6 +101,39 @@ pagination.pagerSize = 5
           name = "About"
           url = "/about"
         [[languages.en.menu.main]]
+          identifier = "showcase"
+          name = "Showcase"
+          url = "/showcase"
+
+  [languages.it]
+    languageName = "Italiano"
+    title = "Antikthera Archives"
+
+    [languages.it.params]
+      subtitle = "A simple, retro theme for Hugo"
+      owner = "Antikthera Archives"
+      keywords = ""
+      copyright = "Antikthera Archives"
+      menuMore = "Show more"
+      readMore = "Read more"
+      readOtherPosts = "Read other posts"
+      newerPosts = "Newer posts"
+      olderPosts = "Older posts"
+      missingContentMessage = "Page not found..."
+      missingBackButtonLabel = "Back to home page"
+      minuteReadingTime = "min read"
+      words = "words"
+
+      [languages.it.params.logo]
+        logoText = "Antikthera Archives"
+        logoHomeLink = "/"
+
+      [languages.it.menu]
+        [[languages.it.menu.main]]
+          identifier = "about"
+          name = "About"
+          url = "/about"
+        [[languages.it.menu.main]]
           identifier = "showcase"
           name = "Showcase"
           url = "/showcase"
