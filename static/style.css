@@ -1,5 +1,7 @@
-/* Fira Code: https://github.com/tonsky/FiraCode */
-@import url('https://cdn.staticdelivr.com/gfonts/css2?family=Fira+Code:wght@300..700&display=swap');
+/* Mona Sans: https://github.com/github/mona-sans */
+@import url('https://cdn.staticdelivr.com/gh/github/mona-sans@latest/dist/webfont/mona-sans.css');
+/* Space Mono: https://github.com/googlefonts/spacemono */
+@import url('https://cdn.staticdelivr.com/gfonts/css2?family=Space+Mono:wght@400;700&display=swap');
 
 :root {
   --background: #25292c;
@@ -24,8 +26,8 @@ html {
 
 body {
   font-family:
-    "Fira Code",
-    "JetBrains Mono",
+    "Mona Sans",
+    "Space Mono",
     Monaco,
     Consolas,
      "Ubuntu Mono",
@@ -251,8 +253,8 @@ ol li {
 code,
 kbd {
   font-family:
-    "Fira Code",
-    "JetBrains Mono",
+    "Mona Sans",
+    "Space Mono",
     Monaco,
     Consolas,
     Ubuntu Mono,

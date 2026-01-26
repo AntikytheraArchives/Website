@@ -21,7 +21,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font-family: "Fira Code", Monaco, Consolas, "Ubuntu Mono", monospace;
+  font-family: "Mona Sans", Monaco, Consolas, "Ubuntu Mono", monospace;
   font-size: var(--font-size);
   line-height: var(--line-height);
   background-color: var(--background);
@@ -275,7 +275,7 @@ ol li {
 code,
 kbd {
   font-family:
-    "Fira Code",
+    "Mona Sans",
     Monaco,
     Consolas,
     "Ubuntu Mono",
