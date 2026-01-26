@@ -100,18 +100,22 @@ pagination.pagerSize = 5
           identifier = "about"
           name = "The Archive"
           url = "/about"
+          weight = 10
         [[languages.en.menu.main]]
           identifier = "games"
           name = "Games"
           url = "/games"
+          weight = 20
 		[[languages.en.menu.main]]
           identifier = "press"
           name = "Press"
           url = "/press"
+          weight = 30
 		[[languages.en.menu.main]]
           identifier = "contact"
           name = "Contact Us"
           url = "/contact"
+          weight = 40
 
   [languages.it]
     languageName = "Italiano"
@@ -141,18 +145,22 @@ pagination.pagerSize = 5
           identifier = "about"
           name = "L'Archivio"
           url = "/about"
+          weight = 10
         [[languages.it.menu.main]]
           identifier = "games"
           name = "Giochi"
           url = "/games"
+          weight = 20
 		[[languages.it.menu.main]]
           identifier = "press"
           name = "Press"
           url = "/press"
+          weight = 30
 		[[languages.it.menu.main]]
           identifier = "contact"
           name = "Contattaci"
           url = "/contact"
+          weight = 40
 
 [module]
   # In case you would like to make changes to the theme and keep it locally in you repository,
