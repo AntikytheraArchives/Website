@@ -93,7 +93,7 @@ pagination.pagerSize = 5
 
       [languages.en.params.logo]
         logoText = "Antikthera Archives"
-        logoHomeLink = "/"
+        logoHomeLink = "/Website"
 
       [languages.en.menu]
         [[languages.en.menu.main]]
@@ -138,7 +138,7 @@ pagination.pagerSize = 5
 
       [languages.it.params.logo]
         logoText = "Antikthera Archives"
-        logoHomeLink = "/"
+        logoHomeLink = "/Website"
 
       [languages.it.menu]
         [[languages.it.menu.main]]
