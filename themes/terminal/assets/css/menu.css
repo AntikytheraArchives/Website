@@ -75,6 +75,7 @@
 .menu__dropdown > li a {
   display: flex;
   padding: 5px;
+  white-space: nowrap;
 }
 
 .menu--mobile .menu__trigger {
@@ -91,6 +92,7 @@
 
 .menu--mobile li {
   flex: 0 0 auto;
+  white-space: nowrap;
 }
 
 .menu--mobile li:not(:last-of-type) {
