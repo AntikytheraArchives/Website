@@ -396,11 +396,11 @@ button {
 
 body {
   text-shadow:
-    0 0 calc(var(--crt-glow-spread) * 0.35) color-mix(in srgb, var(--foreground) calc(var(--crt-glow-strength) * 65%), transparent),
-    0 0 calc(var(--crt-glow-spread) * 0.9) color-mix(in srgb, var(--foreground) calc(var(--crt-glow-strength) * 45%), transparent),
-    0 0 calc(var(--crt-glow-spread) * 1.6) color-mix(in srgb, var(--foreground) calc(var(--crt-glow-strength) * 25%), transparent),
-    0.7px 0 0 color-mix(in srgb, #ff4d4d calc(var(--crt-glow-strength) * 25%), transparent),
-    -0.7px 0 0 color-mix(in srgb, #3bd6ff calc(var(--crt-glow-strength) * 18%), transparent);
+    0 0 calc(var(--crt-glow-spread) * 0.35) color-mix(in srgb, currentColor calc(var(--crt-glow-strength) * 65%), transparent),
+    0 0 calc(var(--crt-glow-spread) * 0.9) color-mix(in srgb, currentColor calc(var(--crt-glow-strength) * 45%), transparent),
+    0 0 calc(var(--crt-glow-spread) * 1.6) color-mix(in srgb, currentColor calc(var(--crt-glow-strength) * 25%), transparent),
+    0.7px 0 0 color-mix(in srgb, currentColor calc(var(--crt-glow-strength) * 35%), #ff4d4d),
+    -0.7px 0 0 color-mix(in srgb, currentColor calc(var(--crt-glow-strength) * 35%), #3bd6ff);
 }
 
 h1, h2, h3, h4, h5, h6,
@@ -409,11 +409,11 @@ b, strong,
 th,
 button {
   text-shadow:
-    0 0 calc(var(--crt-glow-spread) * 0.55) color-mix(in srgb, var(--foreground) calc(var(--crt-glow-strength) * 75%), transparent),
-    0 0 calc(var(--crt-glow-spread) * 1.15) color-mix(in srgb, var(--foreground) calc(var(--crt-glow-strength) * 55%), transparent),
-    0 0 calc(var(--crt-glow-spread) * 2) color-mix(in srgb, var(--foreground) calc(var(--crt-glow-strength) * 30%), transparent),
-    0.9px 0 0 color-mix(in srgb, #ff4d4d calc(var(--crt-glow-strength) * 30%), transparent),
-    -0.9px 0 0 color-mix(in srgb, #3bd6ff calc(var(--crt-glow-strength) * 22%), transparent);
+    0 0 calc(var(--crt-glow-spread) * 0.55) color-mix(in srgb, currentColor calc(var(--crt-glow-strength) * 75%), transparent),
+    0 0 calc(var(--crt-glow-spread) * 1.15) color-mix(in srgb, currentColor calc(var(--crt-glow-strength) * 55%), transparent),
+    0 0 calc(var(--crt-glow-spread) * 2) color-mix(in srgb, currentColor calc(var(--crt-glow-strength) * 30%), transparent),
+    0.9px 0 0 color-mix(in srgb, currentColor calc(var(--crt-glow-strength) * 40%), #ff4d4d),
+    -0.9px 0 0 color-mix(in srgb, currentColor calc(var(--crt-glow-strength) * 40%), #3bd6ff);
 }
 
 pre, code, kbd {
