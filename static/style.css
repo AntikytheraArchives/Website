@@ -76,6 +76,7 @@ table {
 
 a {
   color: var(--accent);
+  text-decoration-skip-ink: none;
 }
 
 button {
