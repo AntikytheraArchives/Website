@@ -7,9 +7,19 @@
   --background: #25292c;
   --foreground: #fde30a;
   --accent: #edebe0;
+  
   --radius: 0;
   --font-size: 1rem;
   --line-height: 1.54em;
+  
+  --crt-enabled: 1;
+  --crt-glow-strength: 0.5;
+  --crt-glow-spread: 5px;
+  --crt-scanline-opacity: 0.12;
+  --crt-scanline-size: 3px;
+  --crt-mask-opacity: 0.06;
+  --crt-flicker-opacity: 0.05;
+  --crt-enabled-pct: calc(var(--crt-enabled) * 100%);
 }
 
 html {
@@ -389,22 +399,14 @@ button {
   font-weight: 600;
 }
 
-:root {
-  --crt-glow-strength: 0.5;
-  --crt-glow-spread: 5px;
-  --crt-scanline-opacity: 0.12;
-  --crt-scanline-size: 3px;
-  --crt-mask-opacity: 0.06;
-  --crt-flicker-opacity: 0.05;
-}
 
 body {
   text-shadow:
-    0 0 calc(var(--crt-glow-spread) * 0.35) color-mix(in srgb, currentColor calc(var(--crt-glow-strength) * 65%), transparent),
-    0 0 calc(var(--crt-glow-spread) * 0.9) color-mix(in srgb, currentColor calc(var(--crt-glow-strength) * 45%), transparent),
-    0 0 calc(var(--crt-glow-spread) * 1.6) color-mix(in srgb, currentColor calc(var(--crt-glow-strength) * 25%), transparent),
-    0.7px 0 0 color-mix(in srgb, currentColor calc(var(--crt-glow-strength) * 35%), #ff4d4d),
-    -0.7px 0 0 color-mix(in srgb, currentColor calc(var(--crt-glow-strength) * 35%), #3bd6ff);
+    0 0 calc(var(--crt-glow-spread) * 0.35) color-mix(in srgb, color-mix(in srgb, currentColor calc(var(--crt-glow-strength) * 65%), transparent) var(--crt-enabled-pct), transparent),
+    0 0 calc(var(--crt-glow-spread) * 0.9) color-mix(in srgb, color-mix(in srgb, currentColor calc(var(--crt-glow-strength) * 45%), transparent) var(--crt-enabled-pct), transparent),
+    0 0 calc(var(--crt-glow-spread) * 1.6) color-mix(in srgb, color-mix(in srgb, currentColor calc(var(--crt-glow-strength) * 25%), transparent) var(--crt-enabled-pct), transparent),
+    0.7px 0 0 color-mix(in srgb, color-mix(in srgb, currentColor calc(var(--crt-glow-strength) * 35%), #ff4d4d) var(--crt-enabled-pct), transparent),
+    -0.7px 0 0 color-mix(in srgb, color-mix(in srgb, currentColor calc(var(--crt-glow-strength) * 35%), #3bd6ff) var(--crt-enabled-pct), transparent);
 }
 
 h1, h2, h3, h4, h5, h6,
@@ -413,11 +415,11 @@ b, strong,
 th,
 button {
   text-shadow:
-    0 0 calc(var(--crt-glow-spread) * 0.55) color-mix(in srgb, currentColor calc(var(--crt-glow-strength) * 75%), transparent),
-    0 0 calc(var(--crt-glow-spread) * 1.15) color-mix(in srgb, currentColor calc(var(--crt-glow-strength) * 55%), transparent),
-    0 0 calc(var(--crt-glow-spread) * 2) color-mix(in srgb, currentColor calc(var(--crt-glow-strength) * 30%), transparent),
-    0.9px 0 0 color-mix(in srgb, currentColor calc(var(--crt-glow-strength) * 40%), #ff4d4d),
-    -0.9px 0 0 color-mix(in srgb, currentColor calc(var(--crt-glow-strength) * 40%), #3bd6ff);
+    0 0 calc(var(--crt-glow-spread) * 0.55) color-mix(in srgb, color-mix(in srgb, currentColor calc(var(--crt-glow-strength) * 75%), transparent) var(--crt-enabled-pct), transparent),
+    0 0 calc(var(--crt-glow-spread) * 1.15) color-mix(in srgb, color-mix(in srgb, currentColor calc(var(--crt-glow-strength) * 55%), transparent) var(--crt-enabled-pct), transparent),
+    0 0 calc(var(--crt-glow-spread) * 2) color-mix(in srgb, color-mix(in srgb, currentColor calc(var(--crt-glow-strength) * 30%), transparent) var(--crt-enabled-pct), transparent),
+    0.9px 0 0 color-mix(in srgb, color-mix(in srgb, currentColor calc(var(--crt-glow-strength) * 40%), #ff4d4d) var(--crt-enabled-pct), transparent),
+    -0.9px 0 0 color-mix(in srgb, color-mix(in srgb, currentColor calc(var(--crt-glow-strength) * 40%), #3bd6ff) var(--crt-enabled-pct), transparent);
 }
 
 pre, code, kbd {
@@ -456,14 +458,14 @@ body::before {
       rgba(0, 150, 255, var(--crt-mask-opacity)) 3px
     );
   mix-blend-mode: soft-light;
-  opacity: 1;
-  animation: crt-glitch 9.5s infinite steps(1, end);
+  opacity: var(--crt-enabled);
+  animation: crt-glitch calc(var(--crt-enabled) * 9.5s) infinite steps(1, end);
 }
 
 body::after {
   background: rgba(0, 0, 0, 1);
   opacity: 0;
-  animation: crt-flicker 5.25s infinite;
+  animation: crt-flicker calc(var(--crt-enabled) * 5.25s) infinite;
 }
 
 @keyframes crt-flicker {
@@ -505,7 +507,7 @@ body::after {
 }
 
 body {
-  animation: crt-jitter 11.75s infinite steps(1, end);
+  animation: crt-jitter calc(var(--crt-enabled) * 11.75s) infinite steps(1, end);
 }
 
 @media (prefers-reduced-motion: reduce) {
