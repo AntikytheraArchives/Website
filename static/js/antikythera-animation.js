@@ -294,11 +294,6 @@
     // Initial rotations
     startRotationA: 90,   // Left gear
     startRotationB: 180,  // Right gear
-    
-    // Animation control
-    loopAnimation: false,   // Set to true to loop the animation
-    startOnClick: false,    // Set to true to require user click to start
-    loopDelay: 2,         // Seconds between loops (if loopAnimation is true)
   };
 
   // ============================================
@@ -312,6 +307,24 @@
   // ============================================
   // INITIALIZATION
   // ============================================
+
+  function onClick()
+  {      
+    window.AntikytheraAnimation.reset();
+    gearRectangle.removeEventListener('click', onClick);
+    logoText.removeEventListener('click', onClick);
+    CONFIG.initialDelayDuration = 0;
+    playAntikytheraAnimation();
+  }
+    
+  function addClickEventListeners(){
+    // Add double-click handler to restart animation
+    logoText.addEventListener('click', onClick);
+
+    // Add single-click handler to restart animation
+    gearRectangle.addEventListener('click', onClick);
+  }
+  
   function init() {
     // Get element references
     circleA = document.getElementById('circle-a');
@@ -335,33 +348,9 @@
     gsap.set(circleB, { rotation: CONFIG.startRotationB });
     gsap.set(logoText, { opacity: 0 });
 
-    // Add double-click handler to restart animation
-    logoText.addEventListener('click', () => {
-      window.AntikytheraAnimation.reset();
-      playAntikytheraAnimation();
-    });
+    initAudio();
+    playAntikytheraAnimation();
 
-    // Add single-click handler to restart animation
-    gearRectangle.addEventListener('click', () => {
-      window.AntikytheraAnimation.reset();
-      playAntikytheraAnimation();
-    });
-
-    // Start the animation (or wait for click)
-    if (CONFIG.startOnClick) {
-      const startHandler = (e) => {
-        // Initialize audio context on first user interaction
-        initAudio();
-        playAntikytheraAnimation();
-        document.removeEventListener('click', startHandler);
-        document.removeEventListener('touchstart', startHandler);
-      };
-      document.addEventListener('click', startHandler);
-      document.addEventListener('touchstart', startHandler);
-    } else {
-      // Auto-start
-      playAntikytheraAnimation();
-    }
   }
 
   function initAudio() {
@@ -482,15 +471,8 @@
 
     // Create GSAP Timeline (equivalent to DoTween.Sequence)
     const seq = gsap.timeline({
-      onComplete: () => {      
-        // Loop animation if enabled
-        if (CONFIG.loopAnimation) {
-          setTimeout(() => {
-            // Reset positions before looping
-            window.AntikytheraAnimation.reset();
-            playAntikytheraAnimation();
-          }, CONFIG.loopDelay * 1000);
-        }
+      onComplete: () => {
+        addClickEventListeners()
       }
     });
 
@@ -611,7 +593,7 @@
     reset: function() {
       // Stop any playing sound effects
       stopAllSFX();
-      gsap.killTweensOf([circleA, circleB, logoText]);
+      gsap.killTweensOf(".myClass");
       gsap.set(circleA, { rotation: CONFIG.startRotationA, x: 0, y: 0 });
       gsap.set(circleB, { rotation: CONFIG.startRotationB, x: 0, y: 0 });
       gsap.set(logoText, { opacity: 0 });
