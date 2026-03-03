@@ -1,0 +1,206 @@
+{{ define "main" }}
+<!-- Antikythera Animation Container -->
+<div class="antikythera-stage">
+  <div class="antikythera-wrapper">
+    <!-- Yellow Rectangle containing gears -->
+    <div class="gear-rectangle" id="gear-rectangle">
+      <!-- Left Gear - starts at 90 degrees -->
+      <img id="circle-a" class="antikythera-gear" src="/Website/images/gear.webp" alt="Gear">
+      
+      <!-- Right Gear - starts at 180 degrees -->
+      <img id="circle-b" class="antikythera-gear" src="/Website/images/gear.webp" alt="Gear">
+    </div>
+    
+    <!-- Logo Text - outside rectangle, same width -->
+    <div id="logo-text" class="antikythera-logo">
+      <img src="/Website/images/logo-text.webp" alt="Antikythera Archives">
+    </div>
+  </div>
+</div>
+
+<!-- Hidden audio elements for sound effects -->
+<audio id="sfx-start" preload="auto">
+  <source src="/Website/sounds/gear-start.mp3" type="audio/mpeg">
+  <source src="/Website/sounds/gear-start.webm" type="audio/webm">
+</audio>
+<audio id="sfx-end" preload="auto">
+  <source src="/Website/sounds/gear-end.mp3" type="audio/mpeg">
+  <source src="/Website/sounds/gear-end.webm" type="audio/webm">
+</audio>
+<audio id="sfx-logo" preload="auto">
+  <source src="/Website/sounds/logo-reveal.mp3" type="audio/mpeg">
+  <source src="/Website/sounds/logo-reveal.webm" type="audio/webm">
+</audio>
+
+<!-- Load GSAP from CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="/Website/js/antikythera-animation.js"></script>
+
+<style>
+/* ============================================
+   ANTIKYTHERA ANIMATION STYLES
+   Two gears side by side in yellow rectangle
+   ============================================ */
+
+/* Stage - the animation viewport */
+.antikythera-stage {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: 2rem 0;
+  }
+
+/* Wrapper - contains rectangle and logo */
+.antikythera-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+/* Yellow Rectangle - contains both gears */
+.gear-rectangle {
+  background-color: var(--foreground); /* Yellow from theme */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 30px; /* Padding so gears don't touch edges */
+  border-radius: var(--radius);
+  width: 507px;
+  height: 292px;
+  filter:
+    drop-shadow(0 0 calc(var(--crt-glow-spread) * 0.55) color-mix(in srgb, color-mix(in srgb, var(--foreground) calc(var(--crt-glow-strength) * 75%), transparent) var(--crt-enabled-pct), transparent))
+    drop-shadow(0 0 calc(var(--crt-glow-spread) * 1.15) color-mix(in srgb, color-mix(in srgb, var(--foreground) calc(var(--crt-glow-strength) * 55%), transparent) var(--crt-enabled-pct), transparent))
+    drop-shadow(0 0 calc(var(--crt-glow-spread) * 2) color-mix(in srgb, color-mix(in srgb, var(--foreground) calc(var(--crt-glow-strength) * 30%), transparent) var(--crt-enabled-pct), transparent));
+}
+
+/* Gear images - white PNGs colored via JS filter */
+.antikythera-gear {
+  width: 230px;
+  height: auto;
+  object-fit: contain;
+  border: none;
+  padding: 0;
+  filter: var(--antikythera-gear-filter, none);
+}
+
+/* Left gear - slight overlap */
+#circle-a {
+  margin-right: -1.1%;
+}
+
+/* Right gear - continues overlap */
+#circle-b {
+  margin-left: -1.1%;
+}
+
+/* Logo container - same width as rectangle */
+.antikythera-logo {
+  width: 507px;
+  padding: 10px 30px;
+  border-radius: 0 0 var(--radius) var(--radius);
+  opacity: 0; /* Hidden initially - animation reveals this */
+  background: transparent;
+}
+
+/* Logo image - white PNG colored yellow via JS */
+.antikythera-logo img {
+  width: 100%;
+  height: auto;
+  border: none;
+  padding: 0;
+  display: block;
+  filter: var(--antikythera-logo-filter, none)
+    drop-shadow(0 0 calc(var(--crt-glow-spread) * 0.55) color-mix(in srgb, color-mix(in srgb, var(--foreground) calc(var(--crt-glow-strength) * 75%), transparent) var(--crt-enabled-pct), transparent))
+    drop-shadow(0 0 calc(var(--crt-glow-spread) * 1.15) color-mix(in srgb, color-mix(in srgb, var(--foreground) calc(var(--crt-glow-strength) * 55%), transparent) var(--crt-enabled-pct), transparent))
+    drop-shadow(0 0 calc(var(--crt-glow-spread) * 2) color-mix(in srgb, color-mix(in srgb, var(--foreground) calc(var(--crt-glow-strength) * 30%), transparent) var(--crt-enabled-pct), transparent));
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  .gear-rectangle {
+    width: 180px;
+    height: 110px;
+    padding: 15px 20px;
+  }
+  
+  .antikythera-gear {
+    width: 80px;
+    height: auto;
+  }
+  
+  .antikythera-logo {
+    width: 180px;
+    padding: 8px 20px;
+  }
+}
+</style>
+
+{{ if .Content }}
+  <div class="index-content {{ if .Params.framed -}}framed{{- end -}}">
+    {{ .Content }}
+  </div>
+{{ end }}
+
+<div class="posts">
+  {{ $isntDefault := not (or (eq (trim $.Site.Params.contentTypeName " ") "posts") (eq (trim $.Site.Params.contentTypeName " ") "")) }}
+  {{ $contentTypeName := cond $isntDefault (string $.Site.Params.contentTypeName) "posts" }}
+
+  {{ $PageContext := . }}
+  {{ if .IsHome }}
+    {{ $PageContext = .Site }}
+  {{ end }}
+  {{ $paginator := .Paginate (where $PageContext.RegularPages "Type" $contentTypeName) }}
+
+  {{ range $paginator.Pages }}
+    <article class="post on-list">
+      <h2 class="post-title">
+        <a href="{{ .Permalink }}">{{ .Title | markdownify }}</a>
+      </h2>
+
+      <div class="post-meta">
+        {{- if .Date -}}
+          <time class="post-date">
+            {{- partial "post-date" . -}}
+          </time>
+        {{- end -}}
+        {{- with .Params.Author -}}
+          <span class="post-author">{{ . }}</span>
+        {{- end -}}
+      </div>
+
+      {{ if .Params.tags }}
+        <span class="post-tags">
+          {{ range .Params.tags }}
+          #<a href="{{ (urlize (printf "tags/%s/" . )) | absLangURL }}">
+            {{- . -}}
+          </a>&nbsp;
+          {{ end }}
+        </span>
+      {{ end }}
+
+      {{ partial "cover.html" . }}
+
+      <div class="post-content">
+        {{ if .Params.showFullContent }}
+          {{ .Content }}
+        {{ else if .Description }}
+          <p>{{ .Description | markdownify }}</p>
+        {{ else }}
+          {{ .Summary }}
+        {{ end }}
+      </div>
+
+      {{ if not .Params.showFullContent }}
+        <div>
+          <a class="read-more button inline" href="{{ .RelPermalink }}">[{{ $.Site.Params.ReadMore }}]</a>
+        </div>
+      {{ end }}
+    </article>
+  {{ end }}
+
+  {{ partial "pagination.html" . }}
+</div>
+{{ end }}

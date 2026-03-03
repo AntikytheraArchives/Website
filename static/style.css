@@ -16,9 +16,9 @@
   --crt-glow-strength: 0.5;
   --crt-glow-spread: 5px;
   --crt-scanline-opacity: 0.12;
-  --crt-scanline-size: 3px;
+  --crt-scanline-size: 5px;
   --crt-mask-opacity: 0.06;
-  --crt-flicker-opacity: 0.05;
+  --crt-flicker-opacity: 0.1;
   --crt-enabled-pct: calc(var(--crt-enabled) * 100%);
 }
 
@@ -447,15 +447,6 @@ body::before {
       rgba(0, 0, 0, var(--crt-scanline-opacity)) 1px,
       rgba(0, 0, 0, 0) 1px,
       rgba(0, 0, 0, 0) var(--crt-scanline-size)
-    ),
-    repeating-linear-gradient(
-      to right,
-      rgba(255, 0, 0, var(--crt-mask-opacity)) 0,
-      rgba(255, 0, 0, var(--crt-mask-opacity)) 1px,
-      rgba(0, 255, 0, var(--crt-mask-opacity)) 1px,
-      rgba(0, 255, 0, var(--crt-mask-opacity)) 2px,
-      rgba(0, 150, 255, var(--crt-mask-opacity)) 2px,
-      rgba(0, 150, 255, var(--crt-mask-opacity)) 3px
     );
   mix-blend-mode: soft-light;
   opacity: var(--crt-enabled);
