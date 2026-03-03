@@ -62,43 +62,42 @@
 
 /* Yellow Rectangle - contains both gears */
 .gear-rectangle {
-  background-color: var(--accent); /* Yellow from theme */
+  background-color: var(--foreground); /* Yellow from theme */
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px 30px; /* Padding so gears don't touch edges */
   border-radius: var(--radius);
-  /* Size: 2 gears (100px) - overlap + padding */
-  width: 220px;
-  height: 140px;
+  width: 507px;
+  height: 292px;
 }
 
 /* Gear images - white PNGs colored via JS filter */
 .antikythera-gear {
-  width: 100px;
-  height: 100px;
+  width: 230px;
+  height: auto;
+  object-fit: contain;
   border: none;
   padding: 0;
-  background: transparent;
 }
 
 /* Left gear - slight overlap */
 #circle-a {
-  margin-right: -15px;
+  margin-right: -5px;
 }
 
 /* Right gear - continues overlap */
 #circle-b {
-  margin-left: -15px;
+  margin-left: -5px;
 }
 
 /* Logo container - same width as rectangle */
 .antikythera-logo {
-  width: 220px;
-  background-color: var(--accent); /* Yellow matches rectangle */
+  width: 507px;
   padding: 10px 30px;
   border-radius: 0 0 var(--radius) var(--radius);
   opacity: 0; /* Hidden initially - animation reveals this */
+  background: transparent;
 }
 
 /* Logo image - white PNG colored yellow via JS */
@@ -120,7 +119,7 @@
   
   .antikythera-gear {
     width: 80px;
-    height: 80px;
+    height: auto;
   }
   
   .antikythera-logo {

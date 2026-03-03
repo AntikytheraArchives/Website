@@ -22,8 +22,8 @@
     // Rotation
     rotationDegrees: 90,
     
-    // Shake effect (in pixels)
-    initialShakeStrength: 15,
+    // Shake effect (percentage of element size - 5 = 5% vibration)
+    initialShakeStrength: 5,
     finalShakeStrength: 0,
     
     // Initial rotations
@@ -63,13 +63,13 @@
 
     // Apply CSS filters to color white images
     // Gears: white -> black (brightness(0))
-    circleA.style.filter = 'brightness(0)';
-    circleB.style.filter = 'brightness(0)';
+    //circleA.style.filter = 'brightness(0)';
+    //circleB.style.filter = 'brightness(0)';
     
     // Logo: white -> yellow
-    if (logoImg) {
-      logoImg.style.filter = 'sepia(1) saturate(5) hue-rotate(0deg) brightness(1.2)';
-    }
+    //if (logoImg) {
+      //logoImg.style.filter = 'sepia(1) saturate(5) hue-rotate(0deg) brightness(1.2)';
+    //}
 
     // Set initial rotations
     gsap.set(circleA, { rotation: CONFIG.startRotationA });
@@ -138,29 +138,38 @@
 
   // ============================================
   // SHAKE EFFECT
-  // Simulates DoTween's DOShakeAnchorPos
+  // Element dimension-based vibration (not displacement)
   // ============================================
-  function shakeElement(element, duration, strength) {
+  function shakeElement(element, duration, strengthPercent) {
     const shakeTimeline = gsap.timeline();
-    const shakeCount = 10;
+    const shakeCount = 15;
     const interval = duration / shakeCount;
+    
+    // Get element dimensions
+    const rect = element.getBoundingClientRect();
+    const elementSize = Math.min(rect.width, rect.height);
+    
+    // Calculate max shake distance as percentage of element size (vibration, not displacement)
+    // strengthPercent of 10 means shake up to 10% of element dimension
+    const maxShake = elementSize * (strengthPercent / 100);
 
     for (let i = 0; i < shakeCount; i++) {
-      const x = (Math.random() - 0.5) * strength * 2;
-      const y = (Math.random() - 0.5) * strength * 2;
+      // Random vibration around center (small, quick movements)
+      const x = (Math.random() - 0.5) * maxShake;
+      const y = (Math.random() - 0.5) * maxShake;
       shakeTimeline.to(element, {
-        x: `+=${x}`,
-        y: `+=${y}`,
+        x: x,
+        y: y,
         duration: interval,
         ease: 'none'
       });
     }
 
-    // Return to center
+    // Return to exact center (no residual displacement)
     shakeTimeline.to(element, {
       x: 0,
       y: 0,
-      duration: 0.1,
+      duration: 0.05,
       ease: 'power2.out'
     });
 
