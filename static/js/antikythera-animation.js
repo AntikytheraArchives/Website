@@ -304,7 +304,7 @@
   // ============================================
   // ELEMENT REFERENCES
   // ============================================
-  let circleA, circleB, logoText, logoImg;
+  let circleA, circleB, gearRectangle, logoText, logoImg;
   let sfxStart, sfxEnd, sfxLogo;
   let audioContext = null;
   let activeAudioClones = [];
@@ -316,6 +316,7 @@
     // Get element references
     circleA = document.getElementById('circle-a');
     circleB = document.getElementById('circle-b');
+    gearRectangle = document.getElementById('gear-rectangle');
     logoText = document.getElementById('logo-text');
     logoImg = logoText ? logoText.querySelector('img') : null;
     sfxStart = document.getElementById('sfx-start');
@@ -335,7 +336,13 @@
     gsap.set(logoText, { opacity: 0 });
 
     // Add double-click handler to restart animation
-    logoText.addEventListener('dblclick', () => {
+    logoText.addEventListener('click', () => {
+      window.AntikytheraAnimation.reset();
+      playAntikytheraAnimation();
+    });
+
+    // Add single-click handler to restart animation
+    gearRectangle.addEventListener('click', () => {
       window.AntikytheraAnimation.reset();
       playAntikytheraAnimation();
     });
