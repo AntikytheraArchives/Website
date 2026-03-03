@@ -307,6 +307,7 @@
   let circleA, circleB, logoText, logoImg;
   let sfxStart, sfxEnd, sfxLogo;
   let audioContext = null;
+  let activeAudioClones = [];
 
   // ============================================
   // INITIALIZATION
@@ -320,23 +321,13 @@
     sfxStart = document.getElementById('sfx-start');
     sfxEnd = document.getElementById('sfx-end');
     sfxLogo = document.getElementById('sfx-logo');
-
+    
     if (!circleA || !circleB || !logoText) {
       console.warn('Antikythera animation elements not found');
       return;
     }
 
     applyThemeFilters();
-
-    // Apply CSS filters to color white images
-    // Gears: white -> black (brightness(0))
-    //circleA.style.filter = 'brightness(0)';
-    //circleB.style.filter = 'brightness(0)';
-    
-    // Logo: white -> yellow
-    //if (logoImg) {
-      //logoImg.style.filter = 'sepia(1) saturate(5) hue-rotate(0deg) brightness(1.2)';
-    //}
 
     // Set initial rotations
     gsap.set(circleA, { rotation: CONFIG.startRotationA });
@@ -345,26 +336,21 @@
 
     // Add double-click handler to restart animation
     logoText.addEventListener('dblclick', () => {
-      console.log('Restarting animation...');
       window.AntikytheraAnimation.reset();
       playAntikytheraAnimation();
     });
 
-    // Initialize audio context on first user interaction (required by browsers)
-    document.addEventListener('click', initAudio, { once: true });
-    document.addEventListener('touchstart', initAudio, { once: true });
-
     // Start the animation (or wait for click)
     if (CONFIG.startOnClick) {
-      // Add click handler to start animation
-      const startHandler = () => {
+      const startHandler = (e) => {
+        // Initialize audio context on first user interaction
+        initAudio();
         playAntikytheraAnimation();
         document.removeEventListener('click', startHandler);
         document.removeEventListener('touchstart', startHandler);
       };
       document.addEventListener('click', startHandler);
       document.addEventListener('touchstart', startHandler);
-      console.log('Click anywhere to start animation');
     } else {
       // Auto-start
       playAntikytheraAnimation();
@@ -372,35 +358,67 @@
   }
 
   function initAudio() {
-    if (!audioContext) {
-      audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    }
-    // Resume audio context if suspended
-    if (audioContext.state === 'suspended') {
-      audioContext.resume();
-    }
+    // For HTML5 audio, we need to ensure audio is "unlocked" after user interaction
+    // Try to play and immediately pause each audio element to unlock them
+    [sfxStart, sfxEnd, sfxLogo].forEach(audio => {
+      if (!audio) return;
+      const wasMuted = audio.muted;
+      audio.muted = true;
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          audio.pause();
+          audio.currentTime = 0;
+          audio.muted = wasMuted;
+        }).catch(() => {
+          audio.muted = wasMuted;
+        });
+      }
+    });
   }
 
   // ============================================
   // SOUND EFFECTS
   // ============================================
   function playSFX(audioElement) {
-    if (!audioElement) return;
-    
+    if (!audioElement) {
+      console.warn('playSFX called with null audio element');
+      return;
+    }
+
     // Clone to allow overlapping sounds
-    const clone = audioElement.cloneNode();
+    const clone = audioElement.cloneNode(true);
     clone.volume = 0.7;
+    clone.style.display = 'none';
+    document.body.appendChild(clone);
+    
+    // Track this clone so we can stop it if needed
+    activeAudioClones.push(clone);
     
     const playPromise = clone.play();
     if (playPromise !== undefined) {
-      playPromise.catch(err => {
-        // Autoplay prevented - user needs to interact first
-        console.log('Audio playback prevented:', err.message);
+      playPromise.then(() => {
+
+      }).catch(err => {
+        console.error('Audio playback error:', audioElement.id, err.message);
       });
     }
 
     // Clean up clone after playing
-    clone.onended = () => clone.remove();
+    clone.onended = () => {
+      const idx = activeAudioClones.indexOf(clone);
+      if (idx > -1) activeAudioClones.splice(idx, 1);
+      clone.remove();
+    };
+  }
+
+  function stopAllSFX() {
+    activeAudioClones.forEach(clone => {
+      clone.pause();
+      clone.currentTime = 0;
+      clone.remove();
+    });
+    activeAudioClones = [];
   }
 
   // ============================================
@@ -457,9 +475,7 @@
 
     // Create GSAP Timeline (equivalent to DoTween.Sequence)
     const seq = gsap.timeline({
-      onComplete: () => {
-        console.log('Antikythera animation complete');
-        
+      onComplete: () => {      
         // Loop animation if enabled
         if (CONFIG.loopAnimation) {
           setTimeout(() => {
@@ -586,6 +602,8 @@
   window.AntikytheraAnimation = {
     play: playAntikytheraAnimation,
     reset: function() {
+      // Stop any playing sound effects
+      stopAllSFX();
       gsap.killTweensOf([circleA, circleB, logoText]);
       gsap.set(circleA, { rotation: CONFIG.startRotationA, x: 0, y: 0 });
       gsap.set(circleB, { rotation: CONFIG.startRotationB, x: 0, y: 0 });
