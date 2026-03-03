@@ -308,12 +308,20 @@
   // INITIALIZATION
   // ============================================
 
-  function onClick()
+  async function onClick()
   {      
     window.AntikytheraAnimation.reset();
     gearRectangle.removeEventListener('click', onClick);
     logoText.removeEventListener('click', onClick);
     CONFIG.initialDelayDuration = 0;
+    
+    // Wait for sounds to be ready before playing
+    await Promise.all([
+      waitForAudioLoad(sfxStart),
+      waitForAudioLoad(sfxEnd),
+      waitForAudioLoad(sfxLogo)
+    ]);
+    
     playAntikytheraAnimation();
   }
     
@@ -325,7 +333,24 @@
     gearRectangle.addEventListener('click', onClick);
   }
   
-  function init() {
+  function waitForAudioLoad(audio) {
+    return new Promise((resolve) => {
+      if (!audio) {
+        resolve();
+        return;
+      }
+      // readyState >= 3 means enough data is available to start playing
+      if (audio.readyState >= 3) {
+        resolve();
+        return;
+      }
+      audio.addEventListener('canplaythrough', () => resolve(), { once: true });
+      // Fallback: resolve after 5 seconds even if not loaded
+      setTimeout(() => resolve(), 5000);
+    });
+  }
+
+  async function init() {
     // Get element references
     circleA = document.getElementById('circle-a');
     circleB = document.getElementById('circle-b');
@@ -349,8 +374,15 @@
     gsap.set(logoText, { opacity: 0 });
 
     initAudio();
+    
+    // Wait for all sounds to be loaded before starting animation
+    await Promise.all([
+      waitForAudioLoad(sfxStart),
+      waitForAudioLoad(sfxEnd),
+      waitForAudioLoad(sfxLogo)
+    ]);
+    
     playAntikytheraAnimation();
-
   }
 
   function initAudio() {
