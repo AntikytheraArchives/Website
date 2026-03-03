@@ -278,18 +278,18 @@
   // ============================================
   const CONFIG = {
     // Timing
-    initialDelayDuration: 0.5,
-    rustyDuration: 0.5,
-    smoothDuration: 0.6,
-    snapDuration: 0.2,
-    logoFadeDuration: 1.5,
+    initialDelayDuration: 3.0,
+    rustyDuration: 1.5,
+    smoothDuration: 1.0,
+    snapDuration: 0.3,
+    logoFadeDuration: 1.25,
     
     // Rotation
     rotationDegrees: 90,
     
     // Shake effect (percentage of element size - 5 = 5% vibration)
-    initialShakeStrength: 5,
-    finalShakeStrength: 0,
+    initialShakeStrength: 0.5,
+    finalShakeStrength: 0.1,
     
     // Initial rotations
     startRotationA: 90,   // Left gear
@@ -297,7 +297,7 @@
     
     // Animation control
     loopAnimation: false,   // Set to true to loop the animation
-    startOnClick: true,    // Set to true to require user click to start
+    startOnClick: false,    // Set to true to require user click to start
     loopDelay: 2,         // Seconds between loops (if loopAnimation is true)
   };
 
@@ -505,7 +505,7 @@
         duration: CONFIG.rustyDuration,
         ease: 'power1.inOut'
       }),
-      0 // Add at current position
+      CONFIG.initialDelayDuration // Add at current position
     );
 
     seq.add(
@@ -514,18 +514,18 @@
         duration: CONFIG.rustyDuration,
         ease: 'power1.inOut'
       }),
-      0
+      CONFIG.initialDelayDuration
     );
 
     // Apply shake during rusty phase
     seq.add(
       shakeElement(circleA, CONFIG.rustyDuration, CONFIG.initialShakeStrength),
-      0
+      CONFIG.initialDelayDuration
     );
 
     seq.add(
       shakeElement(circleB, CONFIG.rustyDuration, CONFIG.initialShakeStrength),
-      0
+      CONFIG.initialDelayDuration
     );
 
     // 4. Play end sound
