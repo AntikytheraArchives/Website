@@ -1663,6 +1663,13 @@ input, select, textarea {
 /* CRT Effect */
 
 :root {
+	/* Color palette from Hugo site */
+	--background: #25292c;
+	--foreground: #fde30a;
+	--accent: #edebe0;
+	--radius: 0;
+	
+	/* CRT Effect variables */
 	--crt-enabled: 1;
 	--crt-glow-strength: 0.5;
 	--crt-glow-spread: 5px;
@@ -1813,18 +1820,18 @@ body {
 
 /* Yellow Rectangle - contains both gears */
 .gear-rectangle {
-	background-color: #ffffff;
+	background-color: var(--foreground);
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	padding: 20px 30px;
-	border-radius: 4px;
+	border-radius: var(--radius);
 	width: 507px;
 	height: 292px;
 	filter:
-		drop-shadow(0 0 calc(var(--crt-glow-spread) * 0.55) color-mix(in srgb, color-mix(in srgb, #ffffff calc(var(--crt-glow-strength) * 75%), transparent) var(--crt-enabled-pct), transparent))
-		drop-shadow(0 0 calc(var(--crt-glow-spread) * 1.15) color-mix(in srgb, color-mix(in srgb, #ffffff calc(var(--crt-glow-strength) * 55%), transparent) var(--crt-enabled-pct), transparent))
-		drop-shadow(0 0 calc(var(--crt-glow-spread) * 2) color-mix(in srgb, color-mix(in srgb, #ffffff calc(var(--crt-glow-strength) * 30%), transparent) var(--crt-enabled-pct), transparent));
+		drop-shadow(0 0 calc(var(--crt-glow-spread) * 0.55) color-mix(in srgb, color-mix(in srgb, var(--foreground) calc(var(--crt-glow-strength) * 75%), transparent) var(--crt-enabled-pct), transparent))
+		drop-shadow(0 0 calc(var(--crt-glow-spread) * 1.15) color-mix(in srgb, color-mix(in srgb, var(--foreground) calc(var(--crt-glow-strength) * 55%), transparent) var(--crt-enabled-pct), transparent))
+		drop-shadow(0 0 calc(var(--crt-glow-spread) * 2) color-mix(in srgb, color-mix(in srgb, var(--foreground) calc(var(--crt-glow-strength) * 30%), transparent) var(--crt-enabled-pct), transparent));
 }
 
 /* Gear images - white PNGs colored via JS filter */
@@ -1851,7 +1858,7 @@ body {
 .antikythera-logo {
 	width: 507px;
 	padding: 10px 30px;
-	border-radius: 0 0 4px 4px;
+	border-radius: 0 0 var(--radius) var(--radius);
 	opacity: 0;
 	background: transparent;
 }
@@ -1864,9 +1871,9 @@ body {
 	padding: 0;
 	display: block;
 	filter: var(--antikythera-logo-filter, none)
-		drop-shadow(0 0 calc(var(--crt-glow-spread) * 0.55) color-mix(in srgb, color-mix(in srgb, #ffffff calc(var(--crt-glow-strength) * 75%), transparent) var(--crt-enabled-pct), transparent))
-		drop-shadow(0 0 calc(var(--crt-glow-spread) * 1.15) color-mix(in srgb, color-mix(in srgb, #ffffff calc(var(--crt-glow-strength) * 55%), transparent) var(--crt-enabled-pct), transparent))
-		drop-shadow(0 0 calc(var(--crt-glow-spread) * 2) color-mix(in srgb, color-mix(in srgb, #ffffff calc(var(--crt-glow-strength) * 30%), transparent) var(--crt-enabled-pct), transparent));
+		drop-shadow(0 0 calc(var(--crt-glow-spread) * 0.55) color-mix(in srgb, color-mix(in srgb, var(--foreground) calc(var(--crt-glow-strength) * 75%), transparent) var(--crt-enabled-pct), transparent))
+		drop-shadow(0 0 calc(var(--crt-glow-spread) * 1.15) color-mix(in srgb, color-mix(in srgb, var(--foreground) calc(var(--crt-glow-strength) * 55%), transparent) var(--crt-enabled-pct), transparent))
+		drop-shadow(0 0 calc(var(--crt-glow-spread) * 2) color-mix(in srgb, color-mix(in srgb, var(--foreground) calc(var(--crt-glow-strength) * 30%), transparent) var(--crt-enabled-pct), transparent));
 }
 
 /* Mobile responsiveness */
