@@ -13,7 +13,8 @@
 		top: 0;
 		left: 0;
 		width: 100%;
-		height: 100vh;
+		height: 100vh; // fallback
+		height: 100svh; // match visible viewport so no uncovered bands when scrolling
 		z-index: 1;
 
 		&:before, &:after {
