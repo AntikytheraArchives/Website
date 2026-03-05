@@ -3491,6 +3491,7 @@ body {
 	flex-direction: column;
 	align-items: center;
 	gap: 0;
+	margin-bottom: 1.25rem;
 }
 
 /* Yellow Rectangle - contains both gears */
@@ -3499,10 +3500,10 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 20px 30px;
+	padding: 16px 24px;
 	border-radius: var(--radius);
-	width: 507px;
-	height: 292px;
+	width: 430px;
+	height: 248px;
 	filter:
 		drop-shadow(0 0 calc(var(--crt-glow-spread) * 0.55) color-mix(in srgb, color-mix(in srgb, var(--foreground) calc(var(--crt-glow-strength) * 75%), transparent) var(--crt-enabled-pct), transparent))
 		drop-shadow(0 0 calc(var(--crt-glow-spread) * 1.15) color-mix(in srgb, color-mix(in srgb, var(--foreground) calc(var(--crt-glow-strength) * 55%), transparent) var(--crt-enabled-pct), transparent))
@@ -3511,7 +3512,7 @@ body {
 
 /* Gear images - white PNGs colored via JS filter */
 .antikythera-gear {
-	width: 230px;
+	width: 195px;
 	height: auto;
 	object-fit: contain;
 	border: none;
@@ -3531,8 +3532,8 @@ body {
 
 /* Logo container - same width as rectangle */
 .antikythera-logo {
-	width: 507px;
-	padding: 10px 30px;
+	width: 430px;
+	padding: 8px 24px;
 	border-radius: 0 0 var(--radius) var(--radius);
 	opacity: 0;
 	background: transparent;
@@ -3554,18 +3555,18 @@ body {
 /* Mobile responsiveness */
 @media (max-width: 600px) {
 	.gear-rectangle {
-		width: 180px;
-		height: 110px;
-		padding: 15px 20px;
+		width: 155px;
+		height: 90px;
+		padding: 12px 16px;
 	}
 
 	.antikythera-gear {
-		width: 80px;
+		width: 70px;
 		height: auto;
 	}
 
 	.antikythera-logo {
-		width: 180px;
-		padding: 8px 20px;
+		width: 155px;
+		padding: 6px 16px;
 	}
 }
