@@ -22,9 +22,6 @@
 	// Based on css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice
 		html {
 			box-sizing: border-box;
-			// Scrollbars only when content actually overflows (avoids permanent scrollbar + uncovered bands)
-			overflow-x: hidden;
-			overflow-y: auto;
 		}
 
 		*, *:before, *:after {
