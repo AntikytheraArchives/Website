@@ -3401,7 +3401,9 @@ body::before {
 		);
 	mix-blend-mode: soft-light;
 	opacity: var(--crt-enabled);
-	animation: crt-glitch calc(var(--crt-enabled) * 9.5s) infinite steps(1, end);
+	animation:
+		crt-glitch calc(var(--crt-enabled) * 9.5s) infinite steps(1, end),
+		crt-jitter calc(var(--crt-enabled) * 11.75s) infinite steps(1, end);
 }
 
 body::after {
@@ -3446,10 +3448,6 @@ body::after {
 	50% { transform: translate3d(0, -0.35px, 0); }
 	51% { transform: translate3d(0, 0, 0); }
 	100% { transform: translate3d(0, 0, 0); }
-}
-
-body {
-	animation: crt-jitter calc(var(--crt-enabled) * 11.75s) infinite steps(1, end);
 }
 
 @media (prefers-reduced-motion: reduce) {
