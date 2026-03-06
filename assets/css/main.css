@@ -3335,7 +3335,7 @@ input, select, textarea {
 	--background: #25292c;
 	--foreground: #fde30a;
 	--accent: #edebe0;
-	--radius: 0;
+	--radius: 4;
 	
 	/* CRT Effect variables */
 	--crt-enabled: 1;
@@ -3541,6 +3541,11 @@ body::after {
 		drop-shadow(0 0 calc(var(--crt-glow-spread) * 0.55) color-mix(in srgb, color-mix(in srgb, var(--foreground) calc(var(--crt-glow-strength) * 75%), transparent) var(--crt-enabled-pct), transparent))
 		drop-shadow(0 0 calc(var(--crt-glow-spread) * 1.15) color-mix(in srgb, color-mix(in srgb, var(--foreground) calc(var(--crt-glow-strength) * 55%), transparent) var(--crt-enabled-pct), transparent))
 		drop-shadow(0 0 calc(var(--crt-glow-spread) * 2) color-mix(in srgb, color-mix(in srgb, var(--foreground) calc(var(--crt-glow-strength) * 30%), transparent) var(--crt-enabled-pct), transparent));
+}
+
+/* Hide vertical connector line above the nav (keep middle Work/About divider) */
+#header nav:before {
+	display: none;
 }
 
 /* Mobile responsiveness */
