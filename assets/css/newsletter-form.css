@@ -144,6 +144,8 @@
 .newsletter-input-wrapper {
 	flex: 1;
 	min-width: 250px;
+	display: flex;
+	align-items: center;
 }
 
 .newsletter-input-wrapper input {
@@ -162,6 +164,7 @@
 	width: 100%;
 	box-sizing: border-box;
 	overflow-y: initial;
+	height: 40px;
 }
 
 .newsletter-input-wrapper input::placeholder {
@@ -177,7 +180,8 @@
 .newsletter-button-wrapper {
 	flex: 0 0 auto;
 	display: flex;
-	align-items: flex-end;
+	align-items: center;
+	height: 40px;
 }
 
 .newsletter-button-wrapper button {
@@ -195,7 +199,7 @@
 	line-height: 20px;
 	margin: 0 !important;
 	padding: 10px 15px !important;
-	height: auto;
+	height: 40px;
 	white-space: nowrap;
 }
 
