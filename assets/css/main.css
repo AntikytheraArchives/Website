@@ -1271,17 +1271,17 @@ input, select, textarea {
 			-ms-transition: opacity 0.325s ease-in-out;
 			transition: opacity 0.325s ease-in-out;
 			position: relative;
-			margin-top: 3.5rem;
+			margin-top: 1.0rem;
 		}
 
 			#header > *:before {
 				content: '';
 				display: block;
 				position: absolute;
-				top: calc(-3.5rem - 1px);
+				top: calc(-1.0rem - 1px);
 				left: calc(50% - 1px);
 				width: 0px;
-				height: calc(3.5rem + 1px);
+				height: calc(1.0rem + 1px);
 				background: transparent;
 			}
 
@@ -1817,7 +1817,7 @@ body::after {
 	flex-direction: column;
 	align-items: center;
 	gap: 0;
-	margin-bottom: 1.25rem;
+	margin-bottom: 0;
 }
 
 /* Yellow Rectangle - contains both gears */
