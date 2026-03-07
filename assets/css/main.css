@@ -1280,9 +1280,9 @@ input, select, textarea {
 				position: absolute;
 				top: calc(-3.5rem - 1px);
 				left: calc(50% - 1px);
-				width: 1px;
+				width: 0px;
 				height: calc(3.5rem + 1px);
-				background: #ffffff;
+				background: transparent;
 			}
 
 		#header > :first-child {
@@ -1876,11 +1876,6 @@ body::after {
 		drop-shadow(0 0 calc(var(--crt-glow-spread) * 0.55) color-mix(in srgb, color-mix(in srgb, var(--foreground) calc(var(--crt-glow-strength) * 75%), transparent) var(--crt-enabled-pct), transparent))
 		drop-shadow(0 0 calc(var(--crt-glow-spread) * 1.15) color-mix(in srgb, color-mix(in srgb, var(--foreground) calc(var(--crt-glow-strength) * 55%), transparent) var(--crt-enabled-pct), transparent))
 		drop-shadow(0 0 calc(var(--crt-glow-spread) * 2) color-mix(in srgb, color-mix(in srgb, var(--foreground) calc(var(--crt-glow-strength) * 30%), transparent) var(--crt-enabled-pct), transparent));
-}
-
-/* Hide vertical connector line above the nav (keep middle Work/About divider) */
-#header nav:before {
-	display: none;
 }
 
 /* Mobile responsiveness */

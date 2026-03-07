@@ -1,9 +1,5 @@
 /* Newsletter Form Styles */
 
-#newsletter:before {
-	display: none !important;
-}
-
 .newsletter-container {
 	box-sizing: border-box;
 	display: table;
