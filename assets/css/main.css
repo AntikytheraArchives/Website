@@ -3551,18 +3551,18 @@ body::after {
 /* Mobile responsiveness */
 @media (max-width: 600px) {
 	.gear-rectangle {
-		width: 155px;
-		height: 90px;
+		width: 255px;
+		height: 148px;
 		padding: 12px 16px;
 	}
 
 	.antikythera-gear {
-		width: 70px;
+		width: 115px;
 		height: auto;
 	}
 
 	.antikythera-logo {
-		width: 155px;
+		width: 255px;
 		padding: 6px 16px;
 	}
 }

@@ -291,6 +291,7 @@
 @media only screen and (max-width: 900px) {
 	.newsletter-wrapper {
 		width: 100% !important;
+		max-width: 430px !important;
 	}
 
 	.newsletter-horizontal-row {
@@ -308,5 +309,12 @@
 
 	.newsletter-button-wrapper button {
 		width: 100%;
+	}
+}
+
+/* Smaller screens - match logo size */
+@media only screen and (max-width: 600px) {
+	.newsletter-wrapper {
+		max-width: 255px !important;
 	}
 }
