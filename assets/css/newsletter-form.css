@@ -168,6 +168,12 @@
 	color: var(--background) !important;
 }
 
+.newsletter-input-wrapper input:focus {
+	background-color: var(--accent) !important;
+	color: var(--background) !important;
+	border-color: var(--accent) !important;
+}
+
 .newsletter-button-wrapper {
 	flex: 0 0 auto;
 	display: flex;
