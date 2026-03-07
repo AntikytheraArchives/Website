@@ -165,7 +165,7 @@
 }
 
 .newsletter-input-wrapper input::placeholder {
-	color: var(--background);
+	color: var(--background) !important;
 }
 
 .newsletter-button-wrapper {
