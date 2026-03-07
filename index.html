@@ -10,6 +10,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/newsletter-form.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
@@ -37,6 +38,50 @@
 								</div>
 							</div>
 						</div>
+						
+										<!-- Newsletter -->
+					<section id="newsletter">
+						<div class="newsletter-align-center">
+							<div class="newsletter-wrapper form-mode">
+
+								<div class="newsletter-body horizontal-layout">
+									<div class="newsletter-content">
+										<h4>Stay tuned</h4>
+										<p>You'll receive only major news and updates from us</p>
+									</div>
+
+									<form class="newsletter-form" method="post">
+										<div class="newsletter-form-content horizontal">
+											<div class="newsletter-horizontal-row">
+												<div class="newsletter-input-wrapper">
+													<input type="email" name="fields[email]" placeholder="Email" required autocomplete="email">
+												</div>
+												<div class="newsletter-input-wrapper">
+													<input type="text" name="fields[name]" placeholder="Name" autocomplete="given-name">
+												</div>
+												<div class="newsletter-button-wrapper">
+													<button type="submit" class="primary">Subscribe</button>
+												</div>
+											</div>
+										</div>
+
+										<input type="hidden" name="ml-submit" value="1">
+										<input type="hidden" name="anticsrf" value="true">
+									</form>
+								</div>
+
+								<div class="newsletter-success-body">
+									<div class="newsletter-success-content">
+										<h4>Thank you!</h4>
+										<p>You have successfully joined our subscriber list.</p>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</section>
+
+
 						<nav>
 							<ul>
 								<li><a href="#intro">Intro</a></li>
@@ -381,6 +426,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="assets/js/main.js"></script>
 			<script src="assets/js/gsap.min.js"></script>
 			<script src="assets/js/antikythera-animation.js"></script>
+			<script src="assets/js/newsletter-form.js"></script>
 
 	</body>
 </html>
