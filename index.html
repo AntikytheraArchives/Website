@@ -42,15 +42,15 @@
 						<!-- Newsletter -->
 						<section id="newsletter">
 							<div class="newsletter-align-center">
-								<div class="newsletter-wrapper form-mode">
+								<div id="mlb2-37953475" class="newsletter-wrapper form-mode ml-form-embedContainer ml-subscribe-form ml-subscribe-form-37953475">
 
-									<div class="newsletter-body horizontal-layout">
+									<div class="newsletter-body horizontal-layout ml-form-embedBody ml-form-embedBodyHorizontal row-form">
 										<div class="newsletter-content">
 											<h3>Stay tuned</h3>
 											<p>You'll receive only major news and updates from us</p>
 										</div>
 
-										<form class="newsletter-form" method="post">
+										<form class="newsletter-form ml-block-form" action="https://assets.mailerlite.com/jsonp/2158890/forms/180955746246068191/subscribe" data-code="" method="post">
 											<div class="newsletter-form-content horizontal">
 												<div class="newsletter-horizontal-row">
 													<div class="newsletter-input-wrapper">
@@ -67,7 +67,7 @@
 										</form>
 									</div>
 
-									<div class="newsletter-success-body">
+									<div class="newsletter-success-body ml-form-successBody row-success" style="display: none;">
 										<div class="newsletter-success-content">
 											<h3>Thank you!</h3>
 											<p>You have successfully joined our subscriber list.</p>
@@ -423,7 +423,19 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="assets/js/main.js"></script>
 			<script src="assets/js/gsap.min.js"></script>
 			<script src="assets/js/antikythera-animation.js"></script>
-			<script src="assets/js/newsletter-form.js"></script>
+
+			<!-- MailerLite webform: embeds MailerLite script and initializes takel resource -->
+			<script>
+				function ml_webform_success_37953475() {
+					var $ = ml_jQuery || jQuery;
+					$('.ml-subscribe-form-37953475 .row-success').show();
+					$('.ml-subscribe-form-37953475 .row-form').hide();
+				}
+			</script>
+			<script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b" type="text/javascript"></script>
+			<script>
+				fetch("https://assets.mailerlite.com/jsonp/2158890/forms/180955746246068191/takel")
+			</script>
 
 	</body>
 </html>
