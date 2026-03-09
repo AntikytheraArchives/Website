@@ -4,6 +4,24 @@
 /* Space Mono: https://github.com/googlefonts/spacemono */
 @import url('https://cdn.staticdelivr.com/gfonts/css2?family=Space+Mono:wght@400;700&display=swap');
 
+:root {
+	/* Color palette from Hugo site */
+	--background: #25292c;
+	--foreground: #fde30a;
+	--accent: #edebe0;
+	--radius: 4;
+	
+	/* CRT Effect variables */
+	--crt-enabled: 1;
+	--crt-glow-strength: 0.5;
+	--crt-glow-spread: 5px;
+	--crt-scanline-opacity: 0.12;
+	--crt-scanline-size: 5px;
+	--crt-mask-opacity: 0.06;
+	--crt-flicker-opacity: 0.1;
+	--crt-enabled-pct: calc(var(--crt-enabled) * 100%);
+}
+
 /*
 	Dimension by HTML5 UP
 	html5up.net | @ajlkn
@@ -1306,12 +1324,20 @@ input, select, textarea {
 			}
 
 		#header .content {
-			border-style: solid;
-			border-color: transparent;
-			border-top-width: 0px;
-			border-bottom-width: 0px;
-			max-width: 100%;
-		}
+            border-style: solid;
+            border-color: transparent;
+            border-top-width: 1px;
+            border-bottom-width: 1px;
+            max-width: 100%;
+            -moz-transition: border-color 0.75s ease;
+            -webkit-transition: border-color 0.75s ease;
+            -ms-transition: border-color 0.75s ease;
+            transition: border-color 0.75s ease;
+            -moz-transition-delay: 0.25s;
+            -webkit-transition-delay: 0.25s;
+            -ms-transition-delay: 0.25s;
+            transition-delay: 0.25s;
+        }
 
 			#header .content .inner {
 				-moz-transition: max-height 0.75s ease, padding 0.75s ease, opacity 0.325s ease-in-out;
@@ -1322,7 +1348,7 @@ input, select, textarea {
 				-webkit-transition-delay: 0.25s;
 				-ms-transition-delay: 0.25s;
 				transition-delay: 0.25s;
-				padding: 3rem 2rem;
+				padding: 0rem 0rem;
 				max-height: 40rem;
 				overflow: hidden;
 			}
@@ -1421,7 +1447,12 @@ input, select, textarea {
 				max-height: 0;
 				padding-top: 0;
 				padding-bottom: 0;
+				padding: 2rem 2rem;
 				opacity: 0;
+			}
+
+			body.is-preload #header .content {
+				border-color: #ffffff;
 			}
 
 		@media screen and (max-width: 980px) {
@@ -1664,24 +1695,6 @@ input, select, textarea {
 		}
 
 /* CRT Effect */
-
-:root {
-	/* Color palette from Hugo site */
-	--background: #25292c;
-	--foreground: #fde30a;
-	--accent: #edebe0;
-	--radius: 4;
-	
-	/* CRT Effect variables */
-	--crt-enabled: 1;
-	--crt-glow-strength: 0.5;
-	--crt-glow-spread: 5px;
-	--crt-scanline-opacity: 0.12;
-	--crt-scanline-size: 5px;
-	--crt-mask-opacity: 0.06;
-	--crt-flicker-opacity: 0.1;
-	--crt-enabled-pct: calc(var(--crt-enabled) * 100%);
-}
 
 body {
 	text-shadow:
