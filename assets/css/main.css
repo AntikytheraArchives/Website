@@ -1348,7 +1348,7 @@ input, select, textarea {
 				-webkit-transition-delay: 0.25s;
 				-ms-transition-delay: 0.25s;
 				transition-delay: 0.25s;
-				padding: 0rem 0rem;
+				padding: 0rem 0rem !important;
 				max-height: 40rem;
 				overflow: hidden;
 			}
