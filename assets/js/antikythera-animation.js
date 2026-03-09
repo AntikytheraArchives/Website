@@ -277,6 +277,8 @@
   // CONFIGURATION
   // ============================================
   const CONFIG = {
+    restartAnimationOnClick: false,
+
     // Timing
     initialDelayDuration: 3.0,
     rustyDuration: 1.5,
@@ -309,7 +311,9 @@
   // ============================================
 
   async function onClick()
-  {      
+  { 
+    if (!CONFIG.restartAnimationOnClick) return;
+
     window.AntikytheraAnimation.reset();
     gearRectangle.removeEventListener('click', onClick);
     logoText.removeEventListener('click', onClick);
