@@ -1416,6 +1416,10 @@ input, select, textarea {
 			position: relative;
 		}
 
+		#header nav ul li.games-dropdown + li {
+			border-left: 0;
+		}
+
 		#header nav ul li.games-dropdown .games-toggle {
 			display: block;
 			width: 100%;
