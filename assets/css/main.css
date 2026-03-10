@@ -1452,15 +1452,69 @@ input, select, textarea {
 		#header nav ul li.games-dropdown .dropdown-arrow {
 			display: inline-block;
 			margin-left: 0.5rem;
-		}		#header nav.use-middle:after {
-			content: '';
-			display: block;
+			font-size: 0.7rem;
+			vertical-align: middle;
+		}
+
+		/* Dropdown direction: UP (default) */
+		#header nav ul li.games-dropdown[data-dropdown-direction="up"] .dropdown-menu {
 			position: absolute;
-			top: 0;
-			left: calc(50% - 1px);
-			width: 1px;
-			height: 100%;
-			background: #ffffff;
+			bottom: 100%;
+			left: -1px;
+			right: -1px;
+			background-color: #25292c;
+			border: solid 1px #ffffff;
+			border-bottom: none;
+			border-radius: 4px 4px 0 0;
+			max-height: 0;
+			overflow: hidden;
+			transition: max-height 0.3s ease;
+			box-sizing: border-box;
+		}
+
+		/* Dropdown direction: DOWN */
+		#header nav ul li.games-dropdown[data-dropdown-direction="down"] .dropdown-menu {
+			position: absolute;
+			top: 100%;
+			left: -1px;
+			right: -1px;
+			background-color: #25292c;
+			border: solid 1px #ffffff;
+			border-top: none;
+			border-radius: 0 0 4px 4px;
+			max-height: 0;
+			overflow: hidden;
+			transition: max-height 0.3s ease;
+			box-sizing: border-box;
+		}
+
+		/* Icon rotation for down direction */
+		#header nav ul li.games-dropdown[data-dropdown-direction="down"] .dropdown-arrow {
+			transform: rotate(180deg);
+		}
+
+		#header nav ul li.games-dropdown .dropdown-menu {
+			position: absolute;
+			bottom: 100%;
+			left: -1px;
+			right: -1px;
+			background-color: #25292c;
+			border: solid 1px #ffffff;
+			border-bottom: none;
+			border-radius: 4px 4px 0 0;
+			max-height: 0;
+			overflow: hidden;
+			transition: max-height 0.3s ease;
+			box-sizing: border-box;
+		}
+
+		/* Override position for down direction */
+		#header nav ul li.games-dropdown[data-dropdown-direction="down"] .dropdown-menu {
+			bottom: auto;
+			top: 100%;
+			border-bottom: solid 1px #ffffff;
+			border-top: none;
+			border-radius: 0 0 4px 4px;
 		}
 
 		#header nav.use-middle ul li.is-middle {
@@ -1511,6 +1565,8 @@ input, select, textarea {
 			display: flex;
 			flex-direction: column;
 			border: none;
+			width: 100%;
+			box-sizing: border-box;
 		}
 
 		#header nav ul li.games-dropdown .dropdown-menu ul li {
@@ -1518,7 +1574,9 @@ input, select, textarea {
 			border-right: none;
 			border-top: none;
 			border-bottom: solid 1px #ffffff;
-			flex: 0 0 auto;
+			flex: 1 1 auto;
+			width: 100%;
+			box-sizing: border-box;
 		}
 
 		#header nav ul li.games-dropdown .dropdown-menu ul li:last-child {
@@ -1536,6 +1594,7 @@ input, select, textarea {
 			letter-spacing: 0.2rem;
 			font-size: 0.8rem;
 			border: 0;
+			box-sizing: border-box;
 			text-align: center;
 			text-decoration: none;
 			color: var(--accent);
