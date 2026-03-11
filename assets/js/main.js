@@ -65,6 +65,34 @@
 
 			}
 
+		// Games dropdown menu handler
+		var $gamesDropdown = $nav.find('li.games-dropdown'),
+			$gamesToggle = $gamesDropdown.find('.games-toggle'),
+			$dropdownMenu = $gamesDropdown.find('.dropdown-menu');
+
+		$gamesToggle.on('click', function(e) {
+			e.preventDefault();
+			e.stopPropagation();
+			
+			// Toggle the active class on the dropdown menu
+			$dropdownMenu.toggleClass('active');
+			$gamesToggle.toggleClass('active');
+		});
+
+		// Close dropdown when clicking on a game link
+		$dropdownMenu.find('a').on('click', function() {
+			$dropdownMenu.removeClass('active');
+			$gamesToggle.removeClass('active');
+		});
+
+		// Close dropdown when clicking outside
+		$(document).on('click', function(e) {
+			if (!$gamesDropdown.is(e.target) && $gamesDropdown.has(e.target).length === 0) {
+				$dropdownMenu.removeClass('active');
+				$gamesToggle.removeClass('active');
+			}
+		});
+
 	// Main.
 		var	delay = 325,
 			locked = false;

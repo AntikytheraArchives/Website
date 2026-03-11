@@ -280,7 +280,7 @@
     restartAnimationOnClick: false,
 
     // Timing
-    initialDelayDuration: 3.0,
+    initialDelayDuration: 1.5,
     rustyDuration: 1.5,
     smoothDuration: 1.0,
     snapDuration: 0.3,
