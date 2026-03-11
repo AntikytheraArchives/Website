@@ -73,7 +73,7 @@
 		$gamesToggle.on('click', function(e) {
 			e.preventDefault();
 			e.stopPropagation();
-			
+            
 			// Toggle the active class on the dropdown menu
 			$dropdownMenu.toggleClass('active');
 			$gamesToggle.toggleClass('active');
@@ -91,6 +91,21 @@
 				$dropdownMenu.removeClass('active');
 				$gamesToggle.removeClass('active');
 			}
+		});
+
+		// Update dropdown direction based on presence of vertical scrollbar.
+		// Sets `data-dropdown-direction` to "up" when a vertical scrollbar is shown, otherwise "down".
+		function updateDropdownDirection() {
+			var hasVScroll = document.documentElement.scrollHeight > document.documentElement.clientHeight;
+			$nav.find('li.games-dropdown').attr('data-dropdown-direction', hasVScroll ? 'up' : 'down');
+		}
+
+		// Debounced resize handler
+		var _dirResizeTimeout = null;
+		$window.on('load', updateDropdownDirection);
+		$window.on('resize', function() {
+			clearTimeout(_dirResizeTimeout);
+			_dirResizeTimeout = setTimeout(updateDropdownDirection, 120);
 		});
 
 	// Main.
