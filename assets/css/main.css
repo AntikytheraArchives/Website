@@ -1994,6 +1994,8 @@ body::after {
 	align-items: center;
 	position: relative;
 	margin: 0;
+	padding: 15px;
+	box-sizing: border-box;
 }
 
 /* Wrapper - contains rectangle and logo */
@@ -2015,10 +2017,10 @@ body::after {
 	border-radius: var(--radius);
 	width: 430px;
 	height: 248px;
-	filter:
-		drop-shadow(0 0 calc(var(--crt-glow-spread) * 0.55) color-mix(in srgb, color-mix(in srgb, var(--foreground) calc(var(--crt-glow-strength) * 75%), transparent) var(--crt-enabled-pct), transparent))
-		drop-shadow(0 0 calc(var(--crt-glow-spread) * 1.15) color-mix(in srgb, color-mix(in srgb, var(--foreground) calc(var(--crt-glow-strength) * 55%), transparent) var(--crt-enabled-pct), transparent))
-		drop-shadow(0 0 calc(var(--crt-glow-spread) * 2) color-mix(in srgb, color-mix(in srgb, var(--foreground) calc(var(--crt-glow-strength) * 30%), transparent) var(--crt-enabled-pct), transparent));
+	box-shadow:
+		0 0 calc(var(--crt-glow-spread) * 1) color-mix(in srgb, color-mix(in srgb, var(--foreground) calc(var(--crt-glow-strength) * 90%), transparent) var(--crt-enabled-pct), transparent),
+		0 0 calc(var(--crt-glow-spread) * 2) color-mix(in srgb, color-mix(in srgb, var(--foreground) calc(var(--crt-glow-strength) * 65%), transparent) var(--crt-enabled-pct), transparent),
+		0 0 calc(var(--crt-glow-spread) * 3) color-mix(in srgb, color-mix(in srgb, var(--foreground) calc(var(--crt-glow-strength) * 40%), transparent) var(--crt-enabled-pct), transparent);
 }
 
 /* Gear images - white PNGs colored via JS filter */
