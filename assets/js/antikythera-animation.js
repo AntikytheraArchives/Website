@@ -1,10 +1,3 @@
-/**
- * Antikythera Animation
- * 
- * Converts Unity DoTween animation to GSAP (GreenSock Animation Platform)
- * This is the web equivalent of your Unity DoTween animation.
- */
-
 (function() {
   'use strict';
 
