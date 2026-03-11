@@ -1534,6 +1534,7 @@ input, select, textarea {
 			border: solid 1px #ffffff;
 			border-bottom: none;
 			border-radius: 4px 4px 0 0;
+			z-index: 10000;
 			max-height: 0;
 			overflow: hidden;
 			transition: max-height 0.3s ease;
