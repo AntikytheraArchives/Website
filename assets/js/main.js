@@ -4,6 +4,29 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
+(function() {
+	function ensureFab() {
+		document.querySelectorAll('.brands').forEach(function(el){
+			if (!el.classList.contains('fab')) el.classList.add('fab');
+		});
+	}
+
+	var existing = document.querySelector('link[href*="fontawesome"], link[href*="@fortawesome"]');
+	if (existing) {
+		ensureFab();
+		return;
+	}
+
+	var fa = document.createElement('link');
+	fa.rel = 'stylesheet';
+	fa.href = 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css';
+	fa.crossOrigin = 'anonymous';
+	fa.onload = ensureFab;
+	document.head.appendChild(fa);
+	// In case it was loaded from cache quickly
+	setTimeout(ensureFab, 50);
+})();
+
 (function($) {
 
 	var	$window = $(window),
