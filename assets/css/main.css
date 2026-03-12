@@ -1570,12 +1570,13 @@ input, select, textarea {
 			border-bottom: none;
 		}
 
-		#header nav ul li.games-dropdown .dropdown-menu ul li a {
-			display: block;
+#header nav ul li.games-dropdown .dropdown-menu ul li a {
+			display: flex;
+			align-items: center;
+			justify-content: center;
 			width: 100%;
 			min-width: 10rem;
-			height: 2.75rem;
-			line-height: 2.75rem;
+			min-height: 2.75rem;
 			padding: 0 1.25rem 0 1.45rem;
 			text-transform: uppercase;
 			letter-spacing: 0.2rem;
@@ -1586,6 +1587,12 @@ input, select, textarea {
 			text-decoration: none;
 			color: var(--accent);
 			transition: background-color 0.3s ease;
+			white-space: normal;
+			word-break: break-word;
+			hyphens: auto;
+			line-height: 1.1;
+			padding-top: 0.5rem;
+			padding-bottom: 0.5rem;
 		}
 
 		#header nav ul li.games-dropdown .dropdown-menu ul li a:hover {
