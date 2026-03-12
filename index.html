@@ -148,6 +148,8 @@
 
 						<!-- Privacy Policy -->
 							<article id="privacypolicy">
+								<h2 class="major">Privacy Policy</h2>
+								<span class="image main"><img src="images/pic02.jpg" alt="" /></span>
 								<div id="privacypolicy-placeholder">Loading privacy policy…</div>
 							</article>
 
@@ -249,11 +251,11 @@
 			<!-- Load external privacy policy so updates can be made in one file -->
 			<script>
 			(function(){
-				var container = document.getElementById('privacypolicy');
+				var container = document.getElementById('privacypolicy-placeholder');
 				if(!container) return;
 				fetch('privacypolicy.html', {cache: 'no-cache'})
 					.then(function(res){ if(!res.ok) throw new Error('Fetch failed'); return res.text(); })
-					.then(function(html){ container.innerHTML = html; })
+					.then(function(html){ container.innerHTML = html.replace('<h1>PRIVACY POLICY</h1>',''); })
 					.catch(function(err){ console.warn('Could not load privacy policy:', err); });
 			})();
 			</script>

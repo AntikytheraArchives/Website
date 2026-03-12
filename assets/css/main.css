@@ -2092,7 +2092,8 @@ body::after {
 	}
 }
 
-#privacypolicy, #privacypolicy * {
+#privacypolicy-placeholder * {
+	font-family: "Space Mono", "Courier New", monospace !important;
 	text-shadow: none !important;
 	color: var(--accent) !important;
 	th, td
