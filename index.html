@@ -126,7 +126,7 @@
 
 						<!-- The Archives -->
 							<article id="archives">
-								<h2 class="major">Intro</h2>
+								<h2 class="major">The Archives</h2>
 								<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
 								<p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas. By the way, check out my <a href="#work">awesome work</a>.</p>
 								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel sed vehicula.</p>
@@ -148,9 +148,7 @@
 
 						<!-- Privacy Policy -->
 							<article id="privacypolicy">
-								<h2 class="major">Privacy Policy</h2>
-								<span class="image main"><img src="images/pic02.jpg" alt="" /></span>
-								<p>Lorem ipsum dolor sit amet, consectetur et adipiscing elit. Praesent eleifend dignissim arcu, at eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent urna nisi, fringila lorem et vehicula lacinia quam. Integer sollicitudin mauris nec lorem luctus ultrices. Aliquam libero et malesuada fames ac ante ipsum primis in faucibus. Cras viverra ligula sit amet ex mollis mattis lorem ipsum dolor sit amet.</p>
+								<div id="privacypolicy-placeholder">Loading privacy policy…</div>
 							</article>
 
 						<!-- Credits -->
@@ -246,6 +244,18 @@
 			<script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b" type="text/javascript"></script>
 			<script>
 				fetch("https://assets.mailerlite.com/jsonp/2158890/forms/180955746246068191/takel")
+			</script>
+
+			<!-- Load external privacy policy so updates can be made in one file -->
+			<script>
+			(function(){
+				var container = document.getElementById('privacypolicy');
+				if(!container) return;
+				fetch('privacypolicy.html', {cache: 'no-cache'})
+					.then(function(res){ if(!res.ok) throw new Error('Fetch failed'); return res.text(); })
+					.then(function(html){ container.innerHTML = html; })
+					.catch(function(err){ console.warn('Could not load privacy policy:', err); });
+			})();
 			</script>
 
 	</body>
