@@ -2084,3 +2084,12 @@ body::after {
 		padding: 6px 16px;
 	}
 }
+
+#privacypolicy, #privacypolicy * {
+	text-shadow: none !important;
+	color: var(--accent) !important;
+	th, td
+	{
+		border-color: var(--accent) !important;
+	}
+}
