@@ -18,12 +18,10 @@
 	
 	/* CRT Effect variables */
 	--crt-enabled: 1;
-	--crt-glow-strength: 0.5;
-	--crt-glow-spread: 5px;
 	--crt-scanline-opacity: 0.12;
 	--crt-scanline-size: 5px;
-	--crt-mask-opacity: 0.06;
-	--crt-flicker-opacity: 0.1;
+	--crt-mask-opacity: 0.04;
+	--crt-flicker-opacity: 0.075;
 	--crt-enabled-pct: calc(var(--crt-enabled) * 100%);
 }
 
@@ -1939,14 +1937,14 @@ body::before {
 	mix-blend-mode: soft-light;
 	opacity: var(--crt-enabled);
 	animation:
-		crt-glitch calc(var(--crt-enabled) * 9.5s) infinite steps(1, end),
-		crt-jitter calc(var(--crt-enabled) * 11.75s) infinite steps(1, end);
+		crt-glitch calc(var(--crt-enabled) * 10.5s) infinite steps(1, end),
+		crt-jitter calc(var(--crt-enabled) * 12.75s) infinite steps(1, end);
 }
 
 body::after {
 	background: rgba(0, 0, 0, 1);
 	opacity: 0;
-	animation: crt-flicker calc(var(--crt-enabled) * 5.25s) infinite;
+	animation: crt-flicker calc(var(--crt-enabled) * 6.25s) infinite;
 }
 
 @keyframes crt-flicker {
