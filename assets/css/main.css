@@ -18,6 +18,8 @@
 	
 	/* CRT Effect variables */
 	--crt-enabled: 1;
+	--crt-glow-strength: 0.5;
+	--crt-glow-spread: 5px;
 	--crt-scanline-opacity: 0.12;
 	--crt-scanline-size: 5px;
 	--crt-mask-opacity: 0.04;
