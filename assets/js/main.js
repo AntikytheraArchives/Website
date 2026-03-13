@@ -48,11 +48,33 @@
 		});
 
 	// Play initial animations on page load.
-		$window.on('load', function() {
-			window.setTimeout(function() {
-				$body.removeClass('is-preload');
-			}, 100);
-		});
+			$window.on('load', function() {
+				window.setTimeout(function() {
+					$body.removeClass('is-preload');
+
+					// After preload removal, trigger dropdown direction update
+					// using CSS transition delays: --transition-delay-1 + --transition-delay-2
+					(function() {
+						function parseTimeToMs(str) {
+							if (!str) return 0;
+							str = str.trim();
+							if (str.endsWith('ms')) return parseFloat(str);
+							if (str.endsWith('s')) return parseFloat(str) * 1000;
+							var n = parseFloat(str);
+							return isNaN(n) ? 0 : n;
+						}
+
+						var rootStyles = getComputedStyle(document.documentElement);
+						var d1 = parseTimeToMs(rootStyles.getPropertyValue('--transition-delay-1'));
+						var d2 = parseTimeToMs(rootStyles.getPropertyValue('--transition-delay-2'));
+						var total = d1 + d2;
+
+						// Small buffer to ensure transitions finished
+						setTimeout(updateDropdownDirection, total + 20);
+					})();
+
+				}, 100);
+			});
 
 	// Fix: Flexbox min-height bug on IE.
 		if (browser.name == 'ie') {
