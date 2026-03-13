@@ -4,11 +4,17 @@
 @import url('https://cdn.staticdelivr.com/gfonts/css2?family=Space+Mono:wght@400;700&display=swap');
 
 :root {
-	/* Color palette from Hugo site */
+	/* Color Palette */
 	--background: #25292c;
 	--foreground: #fde30a;
 	--accent: #edebe0;
+
 	--radius: 4;
+
+	/* Preload transition */
+	--transition-delay-1: 0.75s;
+	--transition-delay-2: 0.25s;
+
 	
 	/* CRT Effect variables */
 	--crt-enabled: 1;
@@ -1132,6 +1138,7 @@ input, select, textarea {
 		-ms-transform: scale(1.0);
 		transform: scale(1.0);
 		-webkit-backface-visibility: hidden;
+		backface-visibility: hidden;
 		position: fixed;
 		top: 0;
 		left: 0;
@@ -1155,10 +1162,10 @@ input, select, textarea {
 			-webkit-transition: background-color 2.5s ease-in-out;
 			-ms-transition: background-color 2.5s ease-in-out;
 			transition: background-color 2.5s ease-in-out;
-			-moz-transition-delay: 0.75s;
-			-webkit-transition-delay: 0.75s;
-			-ms-transition-delay: 0.75s;
-			transition-delay: 0.75s;
+			-moz-transition-delay: var(--transition-delay-1);
+			-webkit-transition-delay: var(--transition-delay-1);
+			-ms-transition-delay: var(--transition-delay-1);
+			transition-delay: var(--transition-delay-1);
 			background-image: linear-gradient(to top, rgba(19, 21, 25, 0.5), rgba(19, 21, 25, 0.5)), url("../../images/overlay.png");
 			background-size: auto,
  256px 256px;
@@ -1328,25 +1335,25 @@ input, select, textarea {
             border-top-width: 1px;
             border-bottom-width: 1px;
             max-width: 100%;
-            -moz-transition: border-color 0.75s ease;
-            -webkit-transition: border-color 0.75s ease;
-            -ms-transition: border-color 0.75s ease;
-            transition: border-color 0.75s ease;
-            -moz-transition-delay: 0.25s;
-            -webkit-transition-delay: 0.25s;
-            -ms-transition-delay: 0.25s;
-            transition-delay: 0.25s;
+            -moz-transition: border-color var(--transition-delay-1) ease;
+            -webkit-transition: border-color var(--transition-delay-1) ease;
+            -ms-transition: border-color var(--transition-delay-1) ease;
+            transition: border-color var(--transition-delay-1) ease;
+            -moz-transition-delay: var(--transition-delay-2);
+            -webkit-transition-delay: var(--transition-delay-2);
+            -ms-transition-delay: var(--transition-delay-2);
+            transition-delay: var(--transition-delay-2);
         }
 
 			#header .content .inner {
-				-moz-transition: max-height 0.75s ease, padding 0.75s ease, opacity 0.325s ease-in-out;
-				-webkit-transition: max-height 0.75s ease, padding 0.75s ease, opacity 0.325s ease-in-out;
-				-ms-transition: max-height 0.75s ease, padding 0.75s ease, opacity 0.325s ease-in-out;
-				transition: max-height 0.75s ease, padding 0.75s ease, opacity 0.325s ease-in-out;
-				-moz-transition-delay: 0.25s;
-				-webkit-transition-delay: 0.25s;
-				-ms-transition-delay: 0.25s;
-				transition-delay: 0.25s;
+				-moz-transition: max-height var(--transition-delay-1) ease, padding var(--transition-delay-1) ease, opacity 0.325s ease-in-out;
+				-webkit-transition: max-height var(--transition-delay-1) ease, padding var(--transition-delay-1) ease, opacity 0.325s ease-in-out;
+				-ms-transition: max-height var(--transition-delay-1) ease, padding var(--transition-delay-1) ease, opacity 0.325s ease-in-out;
+				transition: max-height var(--transition-delay-1) ease, padding var(--transition-delay-1) ease, opacity 0.325s ease-in-out;
+				-moz-transition-delay: var(--transition-delay-2);
+				-webkit-transition-delay: var(--transition-delay-2);
+				-ms-transition-delay: var(--transition-delay-2);
+				transition-delay: var(--transition-delay-2);
 				padding: 0rem 0rem !important;
 				max-height: 40rem;
 				overflow: hidden;
